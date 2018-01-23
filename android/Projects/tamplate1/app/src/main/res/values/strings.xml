@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">tamplate1</string>
+
+    <string name="activity_main_btn1">PICTURES</string>
+    <string name="activity_main_btn2">SELECT</string>
+    <string name="activity_main_btn3">About app</string>
+    <string name="activity_ref_btn1">1</string>
+    <string name="activity_ref_btn2">2</string>
+    <string name="activity_ref_btn3">3</string>
+    <string name="activity_ref_btn4">4</string>
+    <string name="activity_ref_btn5">5</string>
+    <string name="activity_ref_btn6">6</string>
+    <string name="activity_ref_btn7">7</string>
+    <string name="activity_ref_btn8">8</string>
+    <string name="activity_ref_btn9">9</string>
+    <string name="activity_ref_btn10">10</string>
+    <string name="activity_ref_btn11">11</string>
+    <string name="activity_ref_btn12">12</string>
+    <string name="activity_ref_btn13">13</string>
+    <string name="activity_ref_btn14">14</string>
+    <string name="activity_ref_btn15">15</string>
+    <string name="activity_ref_btn16">16</string>
+    <string name="activity_ref_btn17">17</string>
+    <string name="activity_ref_btn18">18</string>
+    <string name="activity_ref_btn19">19</string>
+    <string name="activity_ref_btn20">20</string>
+    <string name="activity_ref_btn21">21</string>
+    <string name="activity_ref_btn22">22</string>
+    <string name="activity_ref_btn23">23</string>
+    <string name="activity_ref_btn24">24</string>
+    <string name="activity_ref_btn25">25</string>
+    <string name="about_text">Android App</string>
+
+    <string name="api_base_url">http://bruz.cc/</string> // Ссылка на базовый адрес хоста, указывается со знаком / на конце
+    <string name="api_url">http://bruz.cc/banner/index.php</string>
+    <string name="tab_name">Сделать фоном телефона</string>
+    // //Ссылка на скрипт
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Slider</string> // Название приложения
+
+    <string name="activity_main_btn1">PICTURES</string> // Название первой кнопки в главном меню
+    <string name="activity_main_btn2">SELECT</string> // Название второй кнопки в главном меню
+    <string name="activity_main_btn3">About app</string> // Название третьей кнопки в главном меню
+    <string name="activity_ref_btn1">1</string> // Название заголовка первого слайда
+    <string name="activity_ref_btn2">2</string> // Название заголовка второго слайда
+    <string name="activity_ref_btn3">3</string> // Название заголовка третьего слайда
+    <string name="activity_ref_btn4">4</string> // Название заголовка 4 слайда
+    <string name="activity_ref_btn5">5</string> // Название заголовка 5 слайда
+    <string name="activity_ref_btn6">6</string> // Название заголовка 6 слайда
+    <string name="activity_ref_btn7">7</string> // Название заголовка 7 слайда
+    <string name="activity_ref_btn8">8</string> // Название заголовка 8 слайда
+    <string name="activity_ref_btn9">9</string> // Название заголовка 9 слайда
+    <string name="activity_ref_btn10">10</string> // Название заголовка 10 слайда
+    <string name="about_text">Android App</string> // Текст с третьего слайда
+
+    <string name="api_base_url">sdf</string> // Ссылка на базовый адрес хоста, указывается со знаком / на конце
+    <string name="api_url">sdfs</string> // //Ссылка на скрипт
+</resources>

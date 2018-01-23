@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Изменение приложения</title>
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/dashboard/images/favicon.png" rel="icon" type="image/png" />
+
+
+  </head>
+
+  <body class="index">
+    <h2>Обфускация</h2>
+
+    <div id="wrap">
+      <p><form enctype="multipart/form-data" method="post" action="obfuscator.php" id="usrform">
+        <p>Впишите название проекта (точное название папки, в которой находится проект)</p>
+        <p><input type="text" name="path" id="path"></p> 
+        <h2>Изменение переменных и названий функций</h2>
+        <p><input type="checkbox" id="checkParam" name="checkParam" checked>
+        <label for="checkParam">Изменить названия переменных и функций?</label></p>
+        <p>Какой длинны будут новые имена? (По умолчанию - 8)</p>
+        <p><input type="text" name="countChar" id="countChar"></p>
+        <h2>Добавление библиотек (с осторожностью)</h2>
+        <p>Перечислите библиотеки, через Enter (implementation 'com.squareup.retrofit2:retrofit:2.1.0')</p>
+        <textarea rows="4" cols="50" name="library" form="usrform"></textarea>
+        <h2>Изменение структуры проекта</h2>
+        <p>Сколько пустых функций добавить в классы?(кол-во 1-10)</p>
+        <p><input type="text" name="func" id="func"></p>
+        <p>Сколько структурных уровней добавить?</p>
+        <p><input type="text" name="struct" id="struct"></p>
+        <p><input type="checkbox" id="checkClass" name="checkClass">
+        <label for="checkClass">Изменить названия классов?</label></p>
+        <h2>Изменение cсылок (только для шаблонов с WebView)</h2>
+        <p>Ссылка на сайт 1</p>
+        <p><input type="text" name="url_site1" id="url_site1"></p>
+        <p>Ссылка на сайт 2 (если в проекте есть вторая WebView)</p>
+        <p><input type="text" name="url_site2" id="url_site2"></p>
+        <h2>Загрузка ключа в проект</h2>
+        <p>Выберите файл ключа</p>
+        <p>
+          <input type="file" name="keyFiles">
+        </p>
+        <p>Выберите данные для ключа (xml файл)</p>
+        <p>
+          <input type="file" name="keyXml">
+        </p>
+        <p>
+          <input type="checkbox" id="checkLoad" name="checkLoad" checked>
+          <label for="checkLoad">Включить загрузочный экран? (по умолчанию включен)</label>
+        </p>
+        <p>
+          <input type="checkbox" id="checkWeb" name="checkWeb">
+          <label for="checkWeb">Клик по баннеру будет обрабатывать вебвью?(по умолчанию браузер)</label>
+        </p>
+
+        <p>
+          <input type="checkbox" id="checkCompile" name="checkCompile">
+          <label for="checkCompile">Компилировать?</label>
+        </p>
+
+				<p><input type="submit" value="Отправить" name="upload"></p>
+      </form></p>
+      
+    </div>
+  </body>
+</html>

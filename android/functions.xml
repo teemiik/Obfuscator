@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<functions>
+	<function1>
+		<name>getTimer();</name>
+		<code>
+	private int seconds = 0;
+	private Timer timer;
+	private void getTimer() {
+		
+	    timer = new Timer();
+
+	    timer.scheduleAtFixedRate(new TimerTask() {
+	      	@Override
+	      	public void run() {
+	        	if (seconds != 10) {
+	          		seconds++;
+	        	} else {
+	          		timer.cancel();
+	        	}
+
+	      	}
+	    }, 0, 1000);
+	}
+		</code>
+		<import>
+import java.util.Timer;
+import java.util.TimerTask;
+		</import>
+	</function1>
+	<function2>
+		<name>getInformationMemory();</name>
+		<code>
+	private void getInformationMemory() {
+        ActivityManager activityManager = (ActivityManager) getBaseContext().getSystemService(ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+        activityManager.getMemoryInfo(memoryInfo);
+
+        Log.i(kavichkamy_logkavichka, kavichka memoryInfo.availMem kavichka + memoryInfo.availMem + kavichka\nkavichka );
+        Log.i(kavichkamy_logkavichka, kavichka memoryInfo.lowMemory kavichka + memoryInfo.lowMemory + kavichka\nkavichka );
+        Log.i(kavichkamy_logkavichka, kavichka memoryInfo.threshold kavichka + memoryInfo.threshold + kavichka\nkavichka );
+
+        ListstrelkaVlevoActivityManager.RunningAppProcessInfostrelkaVparavo runningAppProcesses = activityManager.getRunningAppProcesses();
+
+        MapstrelkaVlevoInteger, StringstrelkaVparavo pidMap = new TreeMapstrelkaVlevostrelkaVparavo();
+        for (ActivityManager.RunningAppProcessInfo runningAppProcessInfo : runningAppProcesses)
+        {
+            pidMap.put(runningAppProcessInfo.pid, runningAppProcessInfo.processName);
+        }
+
+        CollectionstrelkaVlevoIntegerstrelkaVparavo keys = pidMap.keySet();
+
+        for(int key : keys)
+        {
+            int pids[] = new int[1];
+            pids[0] = key;
+            android.os.Debug.MemoryInfo[] memoryInfoArray = activityManager.getProcessMemoryInfo(pids);
+            for(android.os.Debug.MemoryInfo pidMemoryInfo: memoryInfoArray)
+            {
+                Log.i(kavichkamy_logkavichka, String.format(kavichka** MEMINFO in pid %d [%s] **\nkavichka,pids[0],pidMap.get(pids[0])));
+                Log.i(kavichkamy_logkavichka, kavichka pidMemoryInfo.getTotalPrivateDirty(): kavichka + pidMemoryInfo.getTotalPrivateDirty() + kavichka\nkavichka);
+                Log.i(kavichkamy_logkavichka, kavichka pidMemoryInfo.getTotalPss(): kavichka + pidMemoryInfo.getTotalPss() + kavichka\nkavichka);
+                Log.i(kavichkamy_logkavichka, kavichka pidMemoryInfo.getTotalSharedDirty(): kavichka + pidMemoryInfo.getTotalSharedDirty() + kavichka\nkavichka);
+            }
+        }
+    }
+	</code>
+		<import>
+import android.app.ActivityManager;
+import android.util.Log;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+		</import>
+	</function2>
+	<function3>
+		<name>getDeviceId(getBaseContext());</name>
+		<code>
+	private static String getDeviceId(Context context) {
+        @SuppressLint(kavichkaHardwareIdskavichka) String device_uuid = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+        if (device_uuid == null) {
+            device_uuid = kavichka12356789kavichka; // for emulator testing
+        } else {
+            try {
+                byte[] _data = device_uuid.getBytes();
+                MessageDigest _digest = java.security.MessageDigest.getInstance(kavichkaMD5kavichka);
+                _digest.update(_data);
+                _data = _digest.digest();
+                BigInteger _bi = new BigInteger(_data).abs();
+                device_uuid = _bi.toString(36);
+            } catch (Exception e) {
+                if (e != null) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return device_uuid;
+    }
+		</code>
+		<import>
+import android.content.Context;
+import android.provider.Settings;
+import android.annotation.SuppressLint;
+
+import java.security.MessageDigest;
+import java.math.BigInteger;
+		</import>
+	</function3>
+	<function4>
+		<name>getDeviceInch(getBaseContext());</name>
+		<code>
+	private static String getDeviceInch(Context activity) {
+        try {
+            DisplayMetrics displayMetrics = activity.getResources().getDisplayMetrics();
+
+            float yInches = displayMetrics.heightPixels / displayMetrics.ydpi;
+            float xInches = displayMetrics.widthPixels / displayMetrics.xdpi;
+            double diagonalInches = Math.sqrt(xInches * xInches + yInches * yInches);
+            return String.valueOf(diagonalInches);
+        } catch (Exception e) {
+            return kavichka-1kavichka;
+        }
+    }
+		</code>
+		<import>
+import android.util.DisplayMetrics;
+		</import>
+	</function4>
+	<function5>
+		<name>getDataType(getBaseContext());</name>
+		<code>
+	private static String getDataType(Context activity) {
+        String type = kavichkaMobile Datakavichka;
+        TelephonyManager tm = (TelephonyManager) activity.getSystemService(Context.TELEPHONY_SERVICE);
+        switch (tm.getNetworkType()) {
+            case TelephonyManager.NETWORK_TYPE_HSDPA:
+                type = kavichkaMobile Data 3Gkavichka;
+                Log.d(kavichkaTypekavichka, kavichka3gkavichka);
+                // for 3g HSDPA networktype will be return as
+                // per testing(real) in device with 3g enable
+                // data
+                // and speed will also matters to decide 3g network type
+                break;
+            case TelephonyManager.NETWORK_TYPE_HSPAP:
+                type = kavichkaMobile Data 4Gkavichka;
+                Log.d(kavichkaTypekavichka, kavichka4gkavichka);
+                // No specification for the 4g but from wiki
+                // i found(HSPAP used in 4g)
+                break;
+            case TelephonyManager.NETWORK_TYPE_GPRS:
+                type = kavichkaMobile Data GPRSkavichka;
+                Log.d(kavichkaTypekavichka, kavichkaGPRSkavichka);
+                break;
+            case TelephonyManager.NETWORK_TYPE_EDGE:
+                type = kavichkaMobile Data EDGE 2Gkavichka;
+                Log.d(kavichkaTypekavichka, kavichkaEDGE 2gkavichka);
+                break;
+
+        }
+
+        return type;
+    }
+		</code>
+		<import>
+import android.telephony.TelephonyManager;
+		</import>
+	</function5>
+	<function6>
+		<name>executeTop();</name>
+		<code>
+	private static String executeTop() {
+        java.lang.Process p = null;
+        BufferedReader in = null;
+        String returnString = null;
+        try {
+            p = Runtime.getRuntime().exec(kavichkatop -n 1kavichka);
+            in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            while (returnString == null || returnString.contentEquals(kavichkakavichka)) {
+                returnString = in.readLine();
+            }
+        } catch (IOException e) {
+            Log.e(kavichkaexecuteTopkavichka, kavichkaerror in getting first line of topkavichka);
+            e.printStackTrace();
+        } finally {
+            try {
+                in.close();
+                p.destroy();
+            } catch (IOException e) {
+                Log.e(kavichkaexecuteTopkavichka, kavichkaerror in closing and destroying top processkavichka);
+                e.printStackTrace();
+            }
+        }
+        return returnString;
+    }
+		</code>
+		<import>
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+		</import>
+	</function6>
+	<function7>
+		<name>readKernelVersion();</name>
+		<code>
+	private static String readKernelVersion() {
+        try {
+            java.lang.Process p = Runtime.getRuntime().exec(kavichkauname -akavichka);
+            InputStream is = null;
+            if (p.waitFor() == 0) {
+                is = p.getInputStream();
+            } else {
+                is = p.getErrorStream();
+            }
+            BufferedReader br = new BufferedReader(new InputStreamReader(is), 1024);
+            String line = br.readLine();
+            br.close();
+            return line;
+        } catch (Exception ex) {
+            return kavichkaERROR: kavichka + ex.getMessage();
+        }
+    }
+		</code>
+		<import>
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+		</import>
+	</function7>
+	<function8>
+		<name>getTimeZine();</name>
+		<code>
+	private void getTimeZine() {
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone(kavichkaGMTkavichka),
+                Locale.getDefault());
+        Date currentLocalTime = calendar.getTime();
+
+        DateFormat date = new SimpleDateFormat(kavichkaZZZZZkavichka,Locale.getDefault());
+        String localTime = date.format(currentLocalTime);
+    }
+		</code>
+		<import>
+import java.util.Calendar;
+import java.util.TimeZone;
+import java.util.Locale;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+		</import>
+	</function8>
+	<function9>
+		<name>selectionSort(arr);</name>
+		<code>
+	private int [] arr = {5, 7, 12, 95, 101};
+    private void selectionSort(int[] arr){
+        for (int i = 0; i strelkaVlevo arr.length; i++) {
+            int min = arr[i];
+            int min_i = i;
+            for (int j = i+1; j strelkaVlevo arr.length; j++) {
+                if (arr[j] strelkaVlevo min) {
+                    min = arr[j];
+                    min_i = j;
+                }
+            }
+            if (i != min_i) {
+                int tmp = arr[i];
+                arr[i] = arr[min_i];
+                arr[min_i] = tmp;
+            }
+        }
+    }
+		</code>
+		<import></import>
+	</function9>
+	<function10>
+		<name>bubbleSort(sorArr);</name>
+		<code>
+	private int [] sorArr = {5, 7, 12, 95, 101};
+    public static void bubbleSort(int[] arr){
+
+        for(int i = arr.length-1 ; i strelkaVparavo 0 ; i--){
+            for(int j = 0 ; j strelkaVlevo i ; j++){
+            if( arr[j] strelkaVparavo arr[j+1] ){
+                int tmp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = tmp;
+            }
+        }
+    }
+		</code>
+		<import></import>
+	</function10>
+</functions>

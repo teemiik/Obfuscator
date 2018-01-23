@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<resources>
+    <string name="app_name">WebApp</string>
+    <string name="url_banner">https://www.yandex.ru/</string>
+    <string name="textMenuButton">Start</string>
+    <string name="api_base_url">http://bruz.cc/</string>
+    <string name="api_url">http://bruz.cc/banner/index.php</string>
+</resources>
